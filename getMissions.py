@@ -5,7 +5,7 @@ vehicle_data = pd.read_csv("/Users/paul/Google_Drive/NIMBUS_lab/Costa Rica/Fligh
 
 print(vehicle_data)
 
-def getMissions(data): # Use this for the Vehicle data sheet
+def getVehicleMissions(data): # Use this for the Vehicle data sheet
 
     mission_array = []
     prior_row_state = 'NULL'
@@ -49,7 +49,7 @@ def getMissions(data): # Use this for the Vehicle data sheet
 
     return mission_array
 
-def getMissionsFromLicor(data_frame):
+def getLicorMissions(data_frame):
     prior_mission_status = 'NULL'
     mission_array = []
 
@@ -98,8 +98,8 @@ if __name__ == "__main__":
                 # data = pd.read_csv(file_path)
                 data = pd.read_excel(file_path)
 
-                # mission_array = getMissions(data)
-                mission_array = getMissionsFromLicor(data)
+                # mission_array = getVehicleMissions(data)
+                mission_array = getLicorMissions(data)
 
                 mission_number = 1
 

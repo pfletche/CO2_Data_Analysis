@@ -25,21 +25,83 @@ def reduceLogRate(data, log_value): # Gets values at different log rate (no aver
 
     return data_out
 
+def averageLoggingRateLicor(data, desired_log_rate):
+
+    print(data)
+
+    licor_log_rate = 2 # Two readings per second (2hz)
+
+    rows_per_datapoint = int(licor_log_rate / desired_log_rate)
+
+    data_out = pd.DataFrame()
+    data_row = pd.DataFrame()
+
+    for index, row in data.iterrows():
+        #print(row)
+        if index % rows_per_datapoint == 0 and index > 0:
+            # print('Average the rows, add to data frame out, and create new dataframe')
+
+            # Get the time from the second index and remove the
+            value = data_row['adjusted_time']
+            time = value.iloc[1]
+
+            data_row = data_row.drop(columns=['adjusted_time', 'mission_status'])
+
+            data_row = data_row.mean()
+
+            data_row['time'] = time
+
+            data_out = data_out.append(data_row, ignore_index=True)
+
+            data_row = pd.DataFrame()
+            data_row = data_row.append(row)
+
+        else:
+            data_row = data_row.append(row)
+    print(data_out)
+    return data_out
+
+
 if __name__ == "__main__":
 
-    for (root, dirs, files) in os.walk('/Users/paul/Google_Drive/NIMBUS_lab/Costa Rica/Flight Data/All_Flight_Data/Vehicle Data (0.5hz)'):
+    #data = pd.read_csv('/Users/paul/Google_Drive/NIMBUS_lab/Costa Rica/Flight Data csv/Licor Data/AdjustedTimeFiles/Sliced Licor Files/test/M3_F41_20210708_Licor_YuccaFarm_HPx3.csv')
+
+    # # Input directory path for Vehicle Data Missions
+    # for (root, dirs, files) in os.walk('/Users/paul/Google_Drive/NIMBUS_lab/Costa Rica/Flight Data/All_Flight_Data/Vehicle Data (0.5hz)'):
+    #
+    #     for file in files:
+    #         if file != '.DS_Store' and file != 'Icon?':
+    #             print('Reading File: ' + file)
+    #             file_path = root + '/' + file
+    #
+    #             vehicle_data = pd.read_csv(file_path)
+    #
+    #             new_vehicle_data = reduceLogRate(vehicle_data, 20)
+    #             print('Finished converting ', file)
+    #
+    #             new_file_name = root + '/halfHz_' + file
+    #             new_vehicle_data.to_csv(new_file_name, index=False)
+    #             # data_file = open(file_path, "r", encoding="ascii", errors="surrogateescape")
+    #
+    #
+    # Input directory path for Licor Data Missions
+    for (root, dirs, files) in os.walk('/Users/paul/Google_Drive/NIMBUS_lab/Costa Rica/Flight Data csv/Licor Data/AdjustedTimeFiles/Sliced Licor Files/missions'):
 
         for file in files:
             if file != '.DS_Store' and file != 'Icon?':
                 print('Reading File: ' + file)
                 file_path = root + '/' + file
 
-                vehicle_data = pd.read_csv(file_path)
+                licor_data = pd.read_csv(file_path)
 
-                new_vehicle_data = reduceLogRate(vehicle_data, 20)
+                new_licor_data = averageLoggingRateLicor(licor_data, 0.5)
                 print('Finished converting ', file)
 
                 new_file_name = root + '/halfHz_' + file
-                new_vehicle_data.to_csv(new_file_name, index=False)
-                # data_file = open(file_path, "r", encoding="ascii", errors="surrogateescape")
+                sf = file.split('_')
+                new_file_name = root + '/' + sf[1] + '_' + sf[0] + '_halfHz_' + file[7:None]
+
+                new_licor_data.to_csv(new_file_name, index=False)
+
+
 

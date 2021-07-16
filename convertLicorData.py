@@ -114,16 +114,7 @@ def getDataAndTimeStamp(data_file):
                         # print(len(line_list))
                         add_partial_line = 1
 
-                        # if last part of last line is </li850>
-                        # if
-                        # move on and save in DF
-
                     else:
-                        # print('**** FULL LINE ****')
-                        # print(last_line_split)
-                        # include next line and count as one line
-                        # print(line_list)
-                        # print(len(line_list))
                         data_lines.append(line_list)
                         line_list = []
             else:

@@ -21,3 +21,9 @@ for (root, dirs, files) in os.walk('/Users/paul/Google_Drive/NIMBUS_lab/Costa Ri
             file_df.to_csv(root + '/' + file[0:-4] + 'csv', index=False)
 
 
+
+
+# I need to convert the sparkfun files to csvs
+# I need to process the licor files from
+
+
