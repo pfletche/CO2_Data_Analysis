@@ -27,8 +27,6 @@ def reduceLogRate(data, log_value): # Gets values at different log rate (no aver
 
 def averageLoggingRateLicor(data, desired_log_rate):
 
-    print(data)
-
     licor_log_rate = 2 # Two readings per second (2hz)
 
     rows_per_datapoint = int(licor_log_rate / desired_log_rate)
@@ -37,9 +35,8 @@ def averageLoggingRateLicor(data, desired_log_rate):
     data_row = pd.DataFrame()
 
     for index, row in data.iterrows():
-        #print(row)
+
         if index % rows_per_datapoint == 0 and index > 0:
-            # print('Average the rows, add to data frame out, and create new dataframe')
 
             # Get the time from the second index and remove the
             value = data_row['adjusted_time']
@@ -58,7 +55,7 @@ def averageLoggingRateLicor(data, desired_log_rate):
 
         else:
             data_row = data_row.append(row)
-    print(data_out)
+
     return data_out
 
 
