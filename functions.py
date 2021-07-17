@@ -65,3 +65,139 @@ def averageLoggingRateLicor(data, desired_log_rate): # Get the value at a differ
             data_row = data_row.append(row)
 
     return data_out
+
+def increaseTime(time):
+
+    hours, minutes, seconds = time.split(':')
+
+    hours = int(hours)
+    minutes = int(minutes)
+    seconds = int(seconds)
+
+    if seconds >= 59: # then add to the minutes
+        seconds = 0
+
+        if minutes >= 59: # then add to the hours
+            minutes = 0
+
+            if hours >= 24:
+                hours = 1
+            else:
+                hours += 1
+        else:
+            minutes += 1
+    else:
+        seconds += 1
+
+    if seconds < 10:
+        seconds = '0' + str(seconds)
+    else:
+        seconds = str(seconds)
+
+    time_out = str(hours) + ':' + str(minutes) + ':' + seconds
+
+    return time_out
+
+def assignAdjustedTimeCol(data, flight_start_time):
+
+    adjusted_time = []
+
+    current_time = flight_start_time
+
+    for index, row in data.iterrows():
+
+        if index == 0:
+            current_time = current_time
+        elif index % 2 != 0:
+            current_time = current_time
+        else:
+            current_time = increaseTime(current_time)
+
+        adjusted_time.append(current_time)
+
+    data['adjusted_time'] = adjusted_time
+
+    return data
+
+
+
+
+# ************************************************************************************
+#
+# ************************************************************************************
+
+def assignMissionTimes(data, data_file_name, flight_log):
+
+    # Get the flight number
+    flight_number = data_file_name.split('_')[0]
+    print('Flight Number: ', flight_number)
+
+    # Get flight log row in flight_log
+    log_row = flight_log.loc[flight_log['Flight Number'] == flight_number]
+
+    # Get number of missions
+    num_missions = log_row['# of Missions'].item()
+    print('Number of Missions: ', num_missions)
+
+    # Get flight start time
+    flight_start_time = log_row['Flight Start Time'].item()
+    print('Flight Start Time: ', flight_start_time)
+
+    data = assignAdjustedTimeCol(data, flight_start_time)
+
+    mission_times = []
+
+    # Get start and stop times for missions
+    for missions in range(num_missions):
+        print(missions)
+
+        times = []
+
+        mission_num = missions + 1
+
+        start_column = 'Mission ' + str(mission_num) + ' Start'
+        stop_column = 'Mission ' + str(mission_num) + ' Stop'
+
+        times.append(log_row[start_column].item())
+        times.append(log_row[stop_column].item())
+
+        mission_times.append(times)
+
+    print(mission_times)
+
+    print(data)
+
+    # Next thing to do it iterate through and split up the missions based on the times.
+
+    # Get the row with the first mission start time - return the index
+    # Get the row with the first mission end time - return the index
+
+    missions = []
+
+    for index, times in enumerate(mission_times):
+
+        start_mission_row = data.loc[data['adjusted_time'] == mission_times[index][0]]
+        start_ind = start_mission_row.index.to_list()[0]
+
+        end_mission_row = data.loc[data['adjusted_time'] == mission_times[index][1]]
+        end_ind = end_mission_row.index.to_list()[1]
+
+        print('Mission ', str(index), ' start index: ', start_ind)
+        print('Mission ', str(index), ' end index: ', end_ind)
+
+        missions.append(data.loc[start_ind:end_ind,:])
+
+    print(missions)
+
+    return missions
+
+
+
+
+
+data_file_name = 'F39_20210708_Licor_YuccaFarm_VPx2.csv'
+
+data = pd.read_csv(data_file_name)
+flight_log = pd.read_csv('Flight_Log.csv')
+
+assignMissionTimes(data, data_file_name, flight_log)
