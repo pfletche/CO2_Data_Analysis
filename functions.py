@@ -123,7 +123,9 @@ def assignAdjustedTimeCol(data, flight_start_time):
 
 
 # ************************************************************************************
-#
+# assignMissionTimes(data, data_file_name, flight_log)
+# assigns a time column based on start and stop times in the flight log
+# requires flight logging start time, mission start times, mission end times
 # ************************************************************************************
 
 def assignMissionTimes(data, data_file_name, flight_log):
@@ -172,10 +174,14 @@ def assignMissionTimes(data, data_file_name, flight_log):
     # Get the row with the first mission start time - return the index
     # Get the row with the first mission end time - return the index
 
+    return data, mission_times
+
+
+def sliceMissions(data, mission_times):
+
     missions = []
 
     for index, times in enumerate(mission_times):
-
         start_mission_row = data.loc[data['adjusted_time'] == mission_times[index][0]]
         start_ind = start_mission_row.index.to_list()[0]
 
@@ -185,19 +191,17 @@ def assignMissionTimes(data, data_file_name, flight_log):
         print('Mission ', str(index), ' start index: ', start_ind)
         print('Mission ', str(index), ' end index: ', end_ind)
 
-        missions.append(data.loc[start_ind:end_ind,:])
-
-    print(missions)
+        missions.append(data.loc[start_ind:end_ind, :])
 
     return missions
 
-
-
-
-
-data_file_name = 'F39_20210708_Licor_YuccaFarm_VPx2.csv'
-
-data = pd.read_csv(data_file_name)
-flight_log = pd.read_csv('Flight_Log.csv')
-
-assignMissionTimes(data, data_file_name, flight_log)
+# data_file_name = 'F39_20210708_Licor_YuccaFarm_VPx2.csv'
+#
+# data = pd.read_csv(data_file_name)
+# flight_log = pd.read_csv('Flight_Log.csv')
+#
+# data_with_adjusted_time, mission_times = assignMissionTimes(data, data_file_name, flight_log)
+#
+# missions = sliceMissions(data_with_adjusted_time, mission_times)
+#
+# print(missions)
