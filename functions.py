@@ -119,9 +119,6 @@ def assignAdjustedTimeCol(data, flight_start_time):
 
     return data
 
-
-
-
 # ************************************************************************************
 # assignMissionTimes(data, data_file_name, flight_log)
 # assigns a time column based on start and stop times in the flight log
@@ -132,18 +129,15 @@ def assignMissionTimes(data, data_file_name, flight_log):
 
     # Get the flight number
     flight_number = data_file_name.split('_')[0]
-    print('Flight Number: ', flight_number)
 
     # Get flight log row in flight_log
     log_row = flight_log.loc[flight_log['Flight Number'] == flight_number]
 
     # Get number of missions
     num_missions = log_row['# of Missions'].item()
-    print('Number of Missions: ', num_missions)
 
     # Get flight start time
     flight_start_time = log_row['Flight Start Time'].item()
-    print('Flight Start Time: ', flight_start_time)
 
     data = assignAdjustedTimeCol(data, flight_start_time)
 
@@ -151,7 +145,6 @@ def assignMissionTimes(data, data_file_name, flight_log):
 
     # Get start and stop times for missions
     for missions in range(num_missions):
-        print(missions)
 
         times = []
 
@@ -164,15 +157,6 @@ def assignMissionTimes(data, data_file_name, flight_log):
         times.append(log_row[stop_column].item())
 
         mission_times.append(times)
-
-    print(mission_times)
-
-    print(data)
-
-    # Next thing to do it iterate through and split up the missions based on the times.
-
-    # Get the row with the first mission start time - return the index
-    # Get the row with the first mission end time - return the index
 
     return data, mission_times
 
@@ -188,20 +172,6 @@ def sliceMissions(data, mission_times):
         end_mission_row = data.loc[data['adjusted_time'] == mission_times[index][1]]
         end_ind = end_mission_row.index.to_list()[1]
 
-        print('Mission ', str(index), ' start index: ', start_ind)
-        print('Mission ', str(index), ' end index: ', end_ind)
-
         missions.append(data.loc[start_ind:end_ind, :])
 
     return missions
-
-# data_file_name = 'F39_20210708_Licor_YuccaFarm_VPx2.csv'
-#
-# data = pd.read_csv(data_file_name)
-# flight_log = pd.read_csv('Flight_Log.csv')
-#
-# data_with_adjusted_time, mission_times = assignMissionTimes(data, data_file_name, flight_log)
-#
-# missions = sliceMissions(data_with_adjusted_time, mission_times)
-#
-# print(missions)
