@@ -49,6 +49,51 @@ def getVehicleMissions(data): # Use this for the Vehicle data sheet
 
     return mission_array
 
+def getVehicleMissionsNewFormat(data): # Use this for the Vehicle data sheet
+
+    mission_array = []
+    prior_row_state = 'NULL'
+
+    mission_number = 1
+
+    for index, row in data.iterrows():
+
+        row_state = row[' OSD.flycState']
+
+        if row_state == 'Waypoints' and prior_row_state != 'Waypoints':
+            mission = pd.DataFrame()
+
+            new = row[['CUSTOM.updateTime [local]',
+                       ' OSD.flyTime [s]',
+                       ' OSD.latitude',
+                       ' OSD.longitude',
+                       ' OSD.height [ft]',
+                       ' OSD.altitude [ft]',
+                       ' OSD.flycState']].copy()
+
+            mission = mission.append(new)
+
+        elif row_state == 'Waypoints' and prior_row_state == 'Waypoints':
+
+            new = row[['CUSTOM.updateTime [local]',
+                       ' OSD.flyTime [s]',
+                       ' OSD.latitude',
+                       ' OSD.longitude',
+                       ' OSD.height [ft]',
+                       ' OSD.altitude [ft]',
+                       ' OSD.flycState']].copy()
+
+            mission = mission.append(new)
+
+        elif row_state != 'Waypoints' and prior_row_state == 'Waypoints':
+
+            mission_array.append(mission)
+
+        prior_row_state = row_state
+
+    return mission_array
+
+
 def getLicorMissions(data_frame):
     prior_mission_status = 'NULL'
     mission_array = []
