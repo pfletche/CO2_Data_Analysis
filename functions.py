@@ -225,7 +225,7 @@ def getVehicleMissionsNewFormat(data): # Use this for the Vehicle data sheet
 
     return mission_array
 
-
-data = pd.read_csv('/Users/paul/Google_Drive/NIMBUS_lab/Costa Rica/Flight Data csv/Colab Test/VehicleRAW/F44_DJIFlightRecord-2021-07-13-(10-26-42).csv')
-
-missions = getVehicleMissionsNewFormat(data)
+#
+# data = pd.read_csv('/Users/paul/Google_Drive/NIMBUS_lab/Costa Rica/Flight Data csv/Colab Test/VehicleRAW/F44_DJIFlightRecord-2021-07-13-(10-26-42).csv')
+#
+# missions = getVehicleMissionsNewFormat(data)

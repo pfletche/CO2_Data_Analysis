@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba9bf18c-ea95-41f8-b02f-e2189f5b5fdc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/reduceVehicleDataSize.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getMissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/getMissions.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="209" selection-start-line="209" selection-end-line="215" selection-end-column="48" />
+            <state relative-caret-position="410">
+              <caret line="230" column="46" lean-forward="true" selection-start-line="230" selection-start-column="46" selection-end-line="230" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -39,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/alignLoggingRates.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="60" selection-start-line="60" selection-end-line="60" />
+            <state relative-caret-position="267">
+              <caret line="21" column="54" lean-forward="true" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
               <folding>
                 <element signature="e#128#147#0" expanded="true" />
               </folding>
@@ -81,7 +79,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reduceVehicleDataSize.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="237">
@@ -149,11 +147,11 @@
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/convertLicorData.py" />
         <option value="$PROJECT_DIR$/hello.py" />
-        <option value="$PROJECT_DIR$/alignLoggingRates.py" />
         <option value="$PROJECT_DIR$/getMissions.py" />
         <option value="$PROJECT_DIR$/getMissions.py" />
-        <option value="$PROJECT_DIR$/functions.py" />
         <option value="$PROJECT_DIR$/reduceVehicleDataSize.py" />
+        <option value="$PROJECT_DIR$/alignLoggingRates.py" />
+        <option value="$PROJECT_DIR$/functions.py" />
       </list>
     </option>
   </component>
@@ -209,7 +207,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.reduceVehicleDataSize">
+  <component name="RunManager" selected="Python.functions">
     <configuration name="alignLoggingRates" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CO2_Data_Analysis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -317,8 +315,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.reduceVehicleDataSize" />
         <item itemvalue="Python.functions" />
+        <item itemvalue="Python.reduceVehicleDataSize" />
         <item itemvalue="Python.alignLoggingRates" />
         <item itemvalue="Python.getMissions" />
         <item itemvalue="Python.getLicorMission" />
@@ -392,7 +390,21 @@
       <option name="project" value="LOCAL" />
       <updated>1626553561233</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="This is a commit">
+      <created>1626712364873</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1626712364873</updated>
+    </task>
+    <task id="LOCAL-00010" summary="This is a commit">
+      <created>1626714721962</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1626714721962</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -537,16 +549,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/alignLoggingRates.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
-          <folding>
-            <element signature="e#128#147#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/getMissions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -567,13 +569,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="209" selection-start-line="209" selection-end-line="215" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/reduceVehicleDataSize.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
@@ -581,6 +576,23 @@
           <folding>
             <element signature="e#0#6#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/alignLoggingRates.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="21" column="54" lean-forward="true" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
+          <folding>
+            <element signature="e#128#147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="230" column="46" lean-forward="true" selection-start-line="230" selection-start-column="46" selection-end-line="230" selection-end-column="46" />
         </state>
       </provider>
     </entry>
