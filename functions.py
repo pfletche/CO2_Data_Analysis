@@ -94,7 +94,17 @@ def increaseTime(time):
     else:
         seconds = str(seconds)
 
-    time_out = str(hours) + ':' + str(minutes) + ':' + seconds
+    if minutes < 10:
+        minutes = '0' + str(minutes)
+    else:
+        minutes = str(minutes)
+        
+    if hours < 10:
+        hours = '0' + str(hours)
+    else:
+        hours = str(hours)
+
+    time_out = hours + ':' + minutes + ':' + seconds
 
     return time_out
 
