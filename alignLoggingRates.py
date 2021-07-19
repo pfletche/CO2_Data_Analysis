@@ -13,15 +13,17 @@ def reduceLogRate(data, log_value): # Gets values at different log rate (no aver
 
     for index, row in data.iterrows():
         if index % log_value == 0:
-            new = row[['time(millisecond)',
-                                'datetime(utc)',
-                                'latitude',
-                                'longitude',
-                                'height_above_takeoff(feet)',
-                                'altitude_above_seaLevel(feet)',
-                                'flycState']].copy()
+            # new = row[['time(millisecond)',
+            #                     'datetime(utc)',
+            #                     'latitude',
+            #                     'longitude',
+            #                     'height_above_takeoff(feet)',
+            #                     'altitude_above_seaLevel(feet)',
+            #                     'flycState']].copy()
+            #
+            # data_out = data_out.append(new)
 
-            data_out = data_out.append(new)
+            data_out = data_out.append(row)
 
     return data_out
 
