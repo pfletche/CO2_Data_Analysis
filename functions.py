@@ -235,6 +235,21 @@ def getVehicleMissionsNewFormat(data): # Use this for the Vehicle data sheet
 
     return mission_array
 
+
+def sliceKestralData(kestral_data, mission_times):
+    kestral_missions = []
+
+    for index, times in enumerate(mission_times):
+        start_mission_row = kestral_data.loc[kestral_data['FORMATTED DATE_TIME'] == mission_times[index][0]]
+        start_index = start_mission_row.index.to_list()[0]
+
+        end_mission_row = kestral_data.loc[kestral_data['FORMATTED DATE_TIME'] == mission_times[index][1]]
+        end_index = end_mission_row.index.to_list()[1]
+
+        kestral_missions.append(kestral_data.loc[start_index:end_index + 2, :])
+
+    return kestral_missions
+
 #
 # data = pd.read_csv('/Users/paul/Google_Drive/NIMBUS_lab/Costa Rica/Flight Data csv/Colab Test/VehicleRAW/F44_DJIFlightRecord-2021-07-13-(10-26-42).csv')
 #
