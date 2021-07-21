@@ -99,12 +99,12 @@ def increaseTime(time):
     else:
         minutes = str(minutes)
         
-    # if hours < 10:
-    #     hours = '0' + str(hours)
-    # else:
-    #     hours = str(hours)
+    if hours < 10:
+        hours = '0' + str(hours)
+    else:
+        hours = str(hours)
 
-    time_out = str(hours) + ':' + minutes + ':' + seconds
+    time_out = hours + ':' + minutes + ':' + seconds
 
     return time_out
 
