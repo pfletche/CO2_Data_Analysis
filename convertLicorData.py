@@ -19,6 +19,8 @@ def parseDataLine(data_line):
     data_line.remove('li850')
     data_line.remove('data')
 
+    print(data_line)
+
     raw_index = data_line.index('raw')
 
     # Get the data and the raw data
