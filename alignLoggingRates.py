@@ -44,7 +44,8 @@ def averageLoggingRateLicor(data, desired_log_rate):
             value = data_row['adjusted_time']
             time = value.iloc[1]
 
-            data_row = data_row.drop(columns=['date', 'time', 'adjusted_time'])
+           # data_row = data_row.drop(columns=['date', 'time', 'adjusted_time'])
+            data_row = data_row.drop(columns=['adjusted_time']) # Change to this if licor data doesn't have logger stamp
 
             data_row = data_row.mean()
 
