@@ -83,7 +83,7 @@ if __name__ == "__main__":
     #             new_vehicle_data.to_csv(new_file_name, index=False)
     #             # data_file = open(file_path, "r", encoding="ascii", errors="surrogateescape")
     #
-    #
+
     # Input directory path for Licor Data Missions
     for (root, dirs, files) in os.walk('/Users/paul/Google_Drive/NIMBUS_lab/Costa Rica/Flight Data csv/Licor Data/AdjustedTimeFiles/Sliced Licor Files/missions'):
 

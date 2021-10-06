@@ -1,6 +1,3 @@
-# Importing the required libraries
-
-import linecache as lc
 import re
 import pandas as pd
 
@@ -19,7 +16,7 @@ def parseDataLine(data_line):
     data_line.remove('li850')
     data_line.remove('data')
 
-    print(data_line)
+    # print(data_line)
 
     raw_index = data_line.index('raw')
 
@@ -30,6 +27,7 @@ def parseDataLine(data_line):
     # Get the data labels and values
     labels = []
     values = []
+
     for index, element in enumerate(data):
         if index % 2 == 0:
             labels.append(element)
@@ -290,105 +288,3 @@ if __name__ == "__main__":
         line_df = pd.DataFrame(time_dict)
 
         data_out = data_out.append(line_df, ignore_index=True)
-
-        # Add the dictionaries to a list
-
-
-
-
-
-
-
-# Parse the time stamps
-#     time_dict = {}
-#     time_dict_list = []
-#
-#     for stamp in time_lines:
-#         label, time_stamp = parseTimeStamp(stamp)
-#
-#         print(label)
-#         print(time_stamp)
-#
-#         keys = label
-#         values = time_stamp
-#
-#         for index, element in enumerate(keys):
-#             time_dict[element] = values[index]
-#
-#
-#         print(time_dict)
-#
-#         time_labels.append(label)
-#         time_stamps.append(time_stamp)
-#
-#     print(time_labels)
-#     print(time_stamps)
-#
-#     keys = time_labels
-#     values = time_stamps
-#
-#     data_dict = {}
-#     data_dict_list = {}
-#
-#     for line in data_lines:
-#         if len(line) > 1:
-#             # print(len(line))
-#             # print(line)
-#             print('**')
-#
-#             # Process the line
-#
-#             # if len(line) > 10: # aka 'NO DATA FOR TIME STAMP'
-#             #     print('NO DATA')
-#             # else:
-#             #     for data in line:
-#
-#         else:
-#             #print(line)
-#             # Process the line
-#             labels, data = parseDataLine(line)
-#             print('\n\n')
-#             print(labels)
-#             print(data)
-#
-#             keys = labels
-#             values = data
-#
-#             for index, element in enumerate(keys):
-#                 data_dict[element] = values[index]
-#             # print(data_dict)
-#
-#
-# # Get the time stamp
-# # Get the data
-#     # Determine how many lines of data there are
-#     # Get the average for the data lines
-#
-#         # Parse the time stamps and Data
-#         time_dict = {}
-#         data_dict = {}
-#
-#
-#
-#         for stamp in time_lines:
-#             label, time_stamp = parseTimeStamp(stamp)
-#
-#             print(label)
-#             print(time_stamp)
-#
-#             keys = label
-#             values = time_stamp
-#
-#             for index, element in enumerate(keys):
-#                 time_dict[element] = values[index]
-#
-#             print(time_dict)
-#
-#             time_labels.append(label)
-#             time_stamps.append(time_stamp)
-#
-#         print(time_labels)
-#         print(time_stamps)
-#
-
-

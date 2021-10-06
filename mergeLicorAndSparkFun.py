@@ -1,5 +1,7 @@
 import pandas as pd
 
+# THIS SCRIPT IS CURRENTLY NOT IN USE
+
 # def averageValues()
 
 licor = pd.read_csv('/Users/paul/Google_Drive/NIMBUS_lab/Costa Rica/Flight Data/20210705_CanopyTower/Top Sensor/Licor/20210705_LicorData_CanopyTower_VP_F6.csv')
@@ -28,7 +30,7 @@ for index, row in licor.iterrows():
 
         average['rtcTime'] = time
 
-        .concat([row, average], axis=1) # Does this need to be a dataframe?
+        #.concat([row, average], axis=1) # Does this need to be a dataframe?
 
         # print(average)
 
@@ -42,20 +44,3 @@ for index, row in licor.iterrows():
 
 print(df)
 df.to_csv('20210705_LicorAndSparkFun_CanopyTower_VP_F6.csv')
-
-# slice = sparkFun.loc[0:4,:]
-#
-# print(slice)
-#
-# average = sparkFun.mean(axis=0)
-# average = average.to_frame().transpose()
-#
-# df = pd.DataFrame()
-#
-# df = df.append(average)
-#
-# df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
-# print(df)
-
-
-# For each of the five slices,
